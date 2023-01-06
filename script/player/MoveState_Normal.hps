@@ -23,10 +23,8 @@ const float gfJumpStartForce = 200;
 const float gfJumpUnderwaterMul = 0.5;
 
 ////////////////////////////////////////
-// Ground Bounce
-const float gfGroundBounceSize = 0.12;
-const float gfGroundBounceSpeed = 3.0;
-const float gfMinHitGroundBounceSpeed = 3.0;
+// boign
+const float gfMinHitGroundBounceSpeed = 3.0; // This because I need it
 
 ////////////////////////////////////////
 // Set sounds
@@ -37,26 +35,6 @@ const float gfMaxSoundRangeWalk = 4.f;
 const float gfMaxSoundRangeRun = 8.f;
 const float gfMaxSoundRangeLanding = 16.f;
 const float gfMaxSoundRangeCrawl = 4.f;
-
-////////////////////////////////////////
-// Head Bob
-cVector2f gvCrouchBobMax = cVector2f(0.06, 0.04);
-cVector2f gvWalkBobMax = cVector2f(0.03, 0.03);
-cVector2f gvRunBobMax = cVector2f(0.05, 0.06);
-cVector2f gvCrawlBobMax = cVector2f(0.09, 0.03);
-cVector2f gvEnergyBobSize = cVector2f(0.1f,0.2f);
-			
-float gfCrouchMinBobSpeed = 0.2;
-float gfCrouchMaxBobSpeed = 1.2;
-	
-float gfWalkMinBobSpeed = 0.4;
-float gfWalkMaxBobSpeed = 1.8;
-	
-float gfRunMinBobSpeed = 0.5;
-float gfRunMaxBobSpeed = 2.5;
-
-float gfCrawlMinBobSpeed = 0.2;
-float gfCrawlMaxBobSpeed = 1.0;
 
 ////////////////////////////////////////
 // Crawl
@@ -201,27 +179,14 @@ class cScrMoveState_Normal : iScrMoveState, iScrMoveState_Interface
 		mbSlowStandupMotion = false;
 		mbAfterDamageCrawl = false;
 		
-		mvHeadBob = cVector3f(0,0,0);
-		mfPrevHeadBobCount = 0;
-		mfHeadBobCount = 0;
-		mbBobbing = false;
+		mbHeadGroundBounceActive = false;
 		
 		mbHeadGroundBounceActive = false;
-	
-		mvCurrentBobMax = cVector2f(0,0);
-		mvBobMaxGoal = cVector2f(0,0);
-		
-		mbHeadGroundBounceActive = false;
-		mfBounceSizeMul = 1.0f;
-		mfBounceSpeedMul = 1.0f;
-		mfHeadGroundBounce =0;
 		
 		mbDisableCrawling = false;
 		
 		msPlayerFootWear = "default";
 		msPlayerClothing = "default";
-		
-		SetHeadBobMul(1.0f);
 		
 		mlRunBreathingID = -1;
 		
@@ -255,14 +220,6 @@ class cScrMoveState_Normal : iScrMoveState, iScrMoveState_Interface
 		/////////////////////////////////////////////
 		// Get variables
 		iCharacterBody @pCharBody = mBaseObj.mpPlayer.GetCharacterBody();
-				
-		/////////////////////////////////////////////
-		// Check if in conversation
-		bool bConversation = false;
-		if(mBaseObj.mpPlayer.GetCurrentStateId() == ePlayerState_Conversation)
-		{
-			bConversation = true;
-		}
 		
 		//////////////////////////////////////
 		// Falltime
@@ -294,7 +251,6 @@ class cScrMoveState_Normal : iScrMoveState, iScrMoveState_Interface
 		/////////////////////////////////////////////
 		// Check if running
 		if( mbCrawling==false &&
-			bConversation==false &&  
 			(cInput_IsTriggered(eAction_Run) || (mbAnalogRun && mbCrouching == false) ) )
 		{
 			if (mbCrouching)
@@ -409,17 +365,6 @@ class cScrMoveState_Normal : iScrMoveState, iScrMoveState_Interface
 		}
 		
 		/////////////////////////////////////////////
-		// Conversation
-		if(bConversation)
-		{
-			float fMul = cScript_GetGlobalVarFloat("Conversation_SpeedMul");
-			
-			mBaseObj.mfMaxForwardSpeed *= 0.5*fMul;
-			mBaseObj.mfMaxBackwardSpeed *= 0.5*fMul;
-			mBaseObj.mfMaxSidwaySpeed *= 0.5*fMul;
-		}
-		
-		/////////////////////////////////////////////
 		// Underwater
 		if(Player_GetUnderwater())
 		{
@@ -456,10 +401,6 @@ class cScrMoveState_Normal : iScrMoveState, iScrMoveState_Interface
 		////////////////////////////////////////////
 		// Update Jump and Ground Check
 		UpdateJumping(afTimeStep);
-		
-		////////////////////////////////////////////
-		// Update Head Bob
-		UpdateHeadBob(afTimeStep, fUnmodifiedMaxForwardSpeed);
 				
 		/////////////////////////////////////////////
 		// Update Crawling
@@ -543,8 +484,6 @@ class cScrMoveState_Normal : iScrMoveState, iScrMoveState_Interface
 			if(mbHeadGroundBounceActive == false)
 			{
 				mbHeadGroundBounceActive = true;
-				mfBounceSizeMul = 1.0f;
-				mfBounceSpeedMul = 1.0f;
 				
 				FootSound(eFootSound_Landing, cMath_Abs(avVel.y));
 			}
@@ -591,146 +530,6 @@ class cScrMoveState_Normal : iScrMoveState, iScrMoveState_Interface
 		// Update jump fatigue delay
 		if(Player_GetUnderwater()) mfJumpDelayCount = cMath_Min(mfJumpDelayCount + afTimeStep * 0.45f, gfJumpFatigueDelay);
 		else					   mfJumpDelayCount = cMath_Min(mfJumpDelayCount + afTimeStep, gfJumpFatigueDelay);
-	}
-	
-	//------------------------------------------------------------
-	
-	void UpdateHeadBob(float afTimeStep, float afMaxSpeed)
-	{
-		iCharacterBody @pCharBody = mBaseObj.mpPlayer.GetCharacterBody();
-	
-		///////////////////////////////////////
-		// Fade
-		mfHeadBobMul = cMath_IncreaseTo(mfHeadBobMul, mfHeadBobMulSpeed*afTimeStep, mfHeadBobMulTarget);
-		
-		///////////////////////////////////////
-		//Get the current bob max
-		mvBobMaxGoal = gvWalkBobMax;
-		float fMinBobSpeed = gfWalkMinBobSpeed;
-		float fMaxBobSpeed = gfWalkMaxBobSpeed;
-		
-		float fHealth = Player_GetHealth();
-		float fHealthMul = 1.0f-fHealth;
-		
-		float fToolHeadBobMul = cScript_GetGlobalVarFloat("ToolHeadBobMul");
-			
-		if(mbCrawling)
-		{
-			mvBobMaxGoal = gvCrawlBobMax;
-			fMinBobSpeed = gfCrawlMinBobSpeed;
-			fMaxBobSpeed = gfCrawlMaxBobSpeed;
-		}
-		else if(mbCrouching)
-		{
-			mvBobMaxGoal = gvCrouchBobMax;
-			fMinBobSpeed = gfCrouchMinBobSpeed;
-			fMaxBobSpeed = gfCrouchMaxBobSpeed;
-		}
-		else if(mbRunning)
-		{
-			mvBobMaxGoal = gvRunBobMax;
-			fMinBobSpeed = gfRunMinBobSpeed;
-			fMaxBobSpeed = gfRunMaxBobSpeed;
-		}
-	
-		mvBobMaxGoal*=(1.0f+fHealthMul);
-
-		float fPlayerSpeed = pCharBody.GetVelocity(afTimeStep).Length();
-		float fBobSpeed = fMinBobSpeed + (fPlayerSpeed/ cMath_Max(afMaxSpeed, 0.001f) ) * (fMaxBobSpeed - fMinBobSpeed);
-		
-		/////////////////////
-		// Check if moving
-		bool bMoving = pCharBody.IsOnGround() && pCharBody.GetMovedLastUpdate();
-
-		//If not moving fade size to 0 too.
-		if(bMoving==false)
-		{
-			mvBobMaxGoal = cVector2f(0);
-		}
-		
-		//Fade into the new max
-		float fAdd = 0.1f;
-		mvCurrentBobMax = cMath_Vector2IncreaseTo(mvCurrentBobMax, cVector2f(fAdd * afTimeStep), mvBobMaxGoal);
-		
-		/////////////////////////
-		//Player is not moving
-		if(bMoving==false)
-		{
-			//If the head is in a bob, move it back to the rest state (sin = 1)
-			if(mbBobbing)
-			{
-				//Wrap x between -90 and 270 and see where what direction to go
-				float fX = cMath_Wrap(mfHeadBobCount,cMath_ToRad(-90),cMath_ToRad(270) );
-				float fAdd;
-				if(fX <= cMath_ToRad(90)) 	fAdd = 1;
-				else						fAdd = -1;
-
-				float fDist = cMath_ToRad(90) - fX;
-				
-				mfPrevHeadBobCount = mfHeadBobCount;
-				mfHeadBobCount += afTimeStep * cMath_PiMul2 * fAdd * 6.1f * fDist * 0.05;
-
-				float fSin = cMath_Sin(mfHeadBobCount)*fHealth + cMath_Sin(mfHeadBobCount/2.3)*fHealthMul;
-			}
-		}
-		/////////////////////////
-		//Player moves
-		else
-		{
-			//Set and update variables
-			mbBobbing = true;
-			
-			mfPrevHeadBobCount = mfHeadBobCount;
-			mfHeadBobCount += fBobSpeed * afTimeStep * cMath_PiMul2;
-
-			//Footstep
-			float fPrevCos = cMath_Cos(mfPrevHeadBobCount);
-			float fCos = cMath_Cos(mfHeadBobCount);
-			float fSin = cMath_Sin(mfHeadBobCount);
-			
-			//Check if in lowest position
-			if(fSin < 0 && ((fCos <=0 && fPrevCos >= 0) || (fCos >=0 && fPrevCos <= 0)))
-			{
-				FootSound(eFootSound_Step,0);
-			}
-		}
-		
-		if(mbBobbing)
-		{
-			mvHeadBob.x = cMath_Sin(mfHeadBobCount/2 - cMath_PiDiv4) * mvCurrentBobMax.x;
-			mvHeadBob.y = cMath_Sin(mfHeadBobCount) * mvCurrentBobMax.y - mvCurrentBobMax.y;
-			
-			mvHeadBob.x += fHealthMul*cMath_Cos(mfHeadBobCount/1.4)*gvEnergyBobSize.x;
-			mvHeadBob.y += fHealthMul*cMath_Sin(mfHeadBobCount/2.3)*gvEnergyBobSize.y; - fHealthMul*gvEnergyBobSize.y;
-		}
-		else
-		{
-			mvHeadBob = cVector3f(0);
-		}
-
-		/////////////////////////
-		//Ground bounce
-		if(mbHeadGroundBounceActive)
-		{
-			mfHeadGroundBounce += afTimeStep * gfGroundBounceSpeed * mfBounceSpeedMul;
-			
-			//Slow down on way down, and back up go slow, speed up and then slow.
-			if(mfHeadGroundBounce < 0.5f)
-				mvHeadBob.y += cMath_Sin(cMath_Pi + mfHeadGroundBounce * cMath_Pi) * gfGroundBounceSize * mfBounceSizeMul;
-			else
-				mvHeadBob.y += (cMath_SigmoidCurve( (mfHeadGroundBounce-0.5f)*2.0f )-1) * gfGroundBounceSize * mfBounceSizeMul;
-			
-			if(mfHeadGroundBounce >= 1)
-			{
-				mbHeadGroundBounceActive = false;
-				mfHeadGroundBounce = 0;
-			}
-		}
-		
-		////////////////////////
-		//Set The Camera Add Position
-		mBaseObj.mpPlayer.SetCameraPosAdd(eCameraAddType_Bob, mvHeadBob * mfHeadBobMul * fToolHeadBobMul);
-		mBaseObj.mpPlayer.SetCameraRoll(ePlayerRoll_Move, cMath_ToRad(3*mvHeadBob.y * mfHeadBobMul + 15*mvHeadBob.y*fHealthMul * mfHeadBobMul));
 	}
 	
 	//------------------------------------------------------------
@@ -926,12 +725,6 @@ class cScrMoveState_Normal : iScrMoveState, iScrMoveState_Interface
 		return false;
 	}
 	
-	//------------------------------------------------------------
-		
-	void _Global_GetHeadBob()
-	{
-		cScript_SetGlobalReturnVector3f(mvHeadBob);
-	}
 	
 	//------------------------------------------------------------
 	
@@ -1190,42 +983,6 @@ class cScrMoveState_Normal : iScrMoveState, iScrMoveState_Interface
 	void SetClothing(tString &in asType)
 	{
 		msPlayerClothing = asType;
-	}
-	
-	//------------------------------------------------------------
-	
-	void SetHeadBobMul(float afMul)
-	{
-		mfHeadBobMulTarget = afMul;
-		mfHeadBobMul = afMul;
-	}
-	
-	//------------------------------------------------------------
-	
-	void _GlobalFunc_FadeHeadBobMul()
-	{
-		mfHeadBobMulTarget = cScript_GetGlobalArgFloat(0);
-		float afTime = cScript_GetGlobalArgFloat(1);
-		if (afTime==0.0f)
-		{
-			SetHeadBobMul(mfHeadBobMulTarget);
-			return;
-		}
-		mfHeadBobMulSpeed = cMath_Abs(mfHeadBobMulTarget-mfHeadBobMul)/afTime;
-	}
-	
-	//------------------------------------------------------------
-	
-	void _GlobalFunc_GetHeadBobMul()
-	{
-		cScript_SetGlobalReturnFloat(mfHeadBobMulTarget);
-	}
-	
-	//------------------------------------------------------------
-	
-	void _GlobalFunc_FootStepLanding()
-	{
-		SetHeadBobMul(cScript_GetGlobalArgFloat(0));
 	}
 	
 	//------------------------------------------------------------
@@ -1508,36 +1265,19 @@ class cScrMoveState_Normal : iScrMoveState, iScrMoveState_Interface
 	float mfJumpDelayCount;
 	int mlExtraJumpCount;
 	
-	float mfHeadBobMul=1.0f;
-	float mfHeadBobMulSpeed=0.0f;
-	float mfHeadBobMulTarget=1.0f;
-	
 	bool mbCrouchActionDisabled;
 	bool mbCrouchingDisabled;
 	bool mbJumpingDisabled;
 	bool mbStandingDisabled;
 	
-	bool mbHeadBobActive=true;
-	
-	cVector3f mvHeadBob;
-	float mfPrevHeadBobCount;
-	float mfHeadBobCount;
-	bool mbBobbing;
-	
 	int mlCrawlCount;
 	float mfTemporaryCrawlCount;
-	
-	cVector2f mvCurrentBobMax;
-	cVector2f mvBobMaxGoal;
 	
 	bool mbFootstepSoundsDisabled=false;
 	
 	float mfFallTime=0;
 	
 	bool mbHeadGroundBounceActive;
-	float mfBounceSizeMul;
-	float mfBounceSpeedMul;
-	float mfHeadGroundBounce;
 	
 	int mlRunBreathingID;
 	bool mbRunBreathingDisabled=false;
