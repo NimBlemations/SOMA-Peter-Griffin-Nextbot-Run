@@ -1,5 +1,7 @@
 <PreloadCache>
     <Materials>
-        <Material DebugPos="0.875000 : -0.000500 : 0.625000" Path="static_objects/station/floor/floor_theta02.mat" />
+        <Material DebugPos="0.000000 : 2.250000 : 14.749500" Path="mods/petergriffinnextbot/assets/entities/character/peter_griffin/ptr_grffn.mat" />
+        <Material DebugPos="-11.000000 : -0.000500 : 6.750000" Path="static_objects/station/floor/floor_theta02.mat" />
+        <Material DebugPos="-10.999983 : 4.499980 : 6.749956" Path="static_objects/urban/special/00_04_window_glass.mat" />
     </Materials>
 </PreloadCache>

@@ -1,0 +1,6 @@
+<AINodes ListNum="4">
+    <Node ID="268435463" ListID="0" Name="PathNodeArea_1" />
+    <Node ID="268435468" ListID="1" Name="PathNodeArea_2" />
+    <Node ID="268435470" ListID="2" Name="PathNodeArea_3" />
+    <Node ID="268435476" ListID="3" Name="PathNodeArea_4" />
+</AINodes>

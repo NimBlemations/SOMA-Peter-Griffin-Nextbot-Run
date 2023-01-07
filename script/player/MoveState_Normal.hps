@@ -202,9 +202,9 @@ class cScrMoveState_Normal : iScrMoveState, iScrMoveState_Interface
 	{
 		/////////////////////////////////////////////
 		// Update Speed variables
-		mBaseObj.mfMaxForwardSpeed = 2.5;
-		mBaseObj.mfMaxBackwardSpeed = 2;
-		mBaseObj.mfMaxSidwaySpeed = 2.25;
+		mBaseObj.mfMaxForwardSpeed = 3.5;
+		mBaseObj.mfMaxBackwardSpeed = 3;
+		mBaseObj.mfMaxSidwaySpeed = 3.25;
 		mBaseObj.mfForwardAcc = 8;
 		mBaseObj.mfSidewayAcc = 8;
 		mBaseObj.mfForwardDeacc = 11;
@@ -327,12 +327,13 @@ class cScrMoveState_Normal : iScrMoveState, iScrMoveState_Interface
 		{
 			if(mbRunning)
 			{				
-				fUnmodifiedMaxForwardSpeed += (mBaseObj.mfMaxForwardSpeed * 1.1);
+				fUnmodifiedMaxForwardSpeed += (mBaseObj.mfMaxForwardSpeed * 1.75);
 				
 				float fScriptRunMul = Player_GetRunSpeedMul();
 				fScriptRunMul *= cScript_GetGlobalVarFloat("ToolRunSpeedMul");
-				mBaseObj.mfMaxForwardSpeed += (mBaseObj.mfMaxForwardSpeed * 1.1) * fScriptRunMul;
-				mBaseObj.mfMaxSidwaySpeed += (mBaseObj.mfMaxSidwaySpeed * 0.5) *  fScriptRunMul;
+				mBaseObj.mfMaxForwardSpeed += (mBaseObj.mfMaxForwardSpeed * 1.75) * fScriptRunMul;
+				mBaseObj.mfMaxBackwardSpeed += (mBaseObj.mfMaxBackwardSpeed * 1.75) * fScriptRunMul;
+				mBaseObj.mfMaxSidwaySpeed += (mBaseObj.mfMaxSidwaySpeed * 1.75) *  fScriptRunMul;
 				
 			}
 			if(mbCrouching)

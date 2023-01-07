@@ -1,0 +1,76 @@
+#include "agents/Agent_Humanoid.hps"
+
+enum SanicTime
+{
+	eSanicNextbotSpeed_Chase
+};
+
+const tString familyGuyInst = "NPC/FamilyGuyTheme";
+
+// hey beter
+class cScrAgentSanicNextbot : cScrAgentHumanoid
+{
+	//------------------------------------------------------------
+	
+	/////////////////////////////////////////
+	// INIT
+	/////////////////////////////////////////
+	
+	//------------------------------------------------------------
+	
+	void Init()
+	{
+		mBaseObj.SetUpdatePlayerDetection(true);
+		mBaseObj.SetCheckForDoors(true);
+		mBaseObj.SetMaxCheckDoorDistance(1);
+	}
+	
+	//------------------------------------------------------------
+	
+	/////////////////////////////////////////
+	// LOADING
+	//{//////////////////////////////////////
+	
+	//------------------------------------------------------------
+	
+	void SetupCharBody()
+	{
+		cScrAgentHumanoid::SetupCharBody();
+		
+		iCharacterBody@ pCharBody = mBaseObj.GetCharBody();
+		
+		pCharBody.SetMass(80);
+		pCharBody.SetMaxPositiveMoveSpeed(eCharDir_Forward,1.0f);
+		pCharBody.SetMoveAcc(eCharDir_Forward,4);
+		pCharBody.SetMoveDeacc(eCharDir_Forward,8);
+		pCharBody.SetMaxPushMass(20);
+		pCharBody.SetMaxPushForce(300);
+		pCharBody.SetAccurateClimbing(true);
+		
+		cLux_AddDebugMessage("hey beter");
+	}
+	
+	void SetupAfterLoad(cWorld @apWorld, cResourceVarsObject@ apVars, cResourceVarsObject@ apInstanceVars)
+	{
+		cScrAgentHumanoid::SetupAfterLoad(apWorld, apVars, apInstanceVars);
+		
+		mpPathfinder.SetNodeContainerName("peter");
+		mpPathfinder.SetMaxHeight(0.8f);
+		
+		mpMover.SetMaxForwardSpeed(1);
+		mpMover.SetMaxBackwardSpeed(1);
+		
+		mpMover.AddSpeedState(eSanicNextbotSpeed_Chase);
+		mpMover.SetSpeedState_Forward(8.0);
+		
+		mpMover.SetSpeedState(eSanicNextbotSpeed_Chase);
+		
+		AttackMeter_AddInstance(mBaseObj.GetID(), 7.5f, 2.1f, 1.0f, true, true);
+	}
+	
+	void OnUpdate(float afTimeStep)
+	{
+		if (!cLux_GetPlayer().IsDead())
+			mpPathfinder.MoveTo(mBaseObj.GetPlayerFeetPos(), 1, false);
+	}
+}

@@ -1,6 +1,21 @@
 <HPLMapTrack_Entity ID="931E5E45790B1FD707B6978E6ECDDA3E6CA190F" Version="1.00">
     <Section Name="Axel@SATURN">
-        <FileIndex_Entities NumOfFiles="0" />
-        <Objects />
+        <FileIndex_Entities NumOfFiles="2">
+            <File Id="0" Path="mods/PeterGriffinNextbot/assets/entities/character/peter_griffin/peter_griffin_nextbot.ent" />
+            <File Id="1" Path="entities/character/deepsea_diver/deepsea_diver_monster/deepsea_diver_monster.ent" />
+        </FileIndex_Entities>
+        <Objects>
+            <Entity ID="268435467" Name="ehehehehehe" CreStamp="1673056289" ModStamp="1673059976" WorldPos="0 0 14.75" Rotation="-0 3.14159 -0" Scale="1 1 1" FileIndex="0" Active="true" Important="false" CulledByDistance="true" CulledByFog="true" UID="16 30 268435467">
+                <UserVariables>
+                    <Var Name="CastShadows" Value="true" />
+                    <Var Name="IsAffectedByDecal" Value="true" />
+                    <Var Name="ColorMul" Value="1 1 1 1" />
+                    <Var Name="IllumColor" Value="1 1 1 1" />
+                    <Var Name="IllumBrightness" Value="1" />
+                    <Var Name="IsOccluder" Value="false" />
+                    <Var Name="CollideGroup" Value="" />
+                </UserVariables>
+            </Entity>
+        </Objects>
     </Section>
 </HPLMapTrack_Entity>
