@@ -1,6 +1,6 @@
 <HPLMapTrack_Entity ID="931E5E45790B1FD707B6978E6ECDDA3E6CA190F" Version="1.00">
     <Section Name="Axel@SATURN">
-        <FileIndex_Entities NumOfFiles="9">
+        <FileIndex_Entities NumOfFiles="10">
             <File Id="0" Path="mods/PeterGriffinNextbot/assets/entities/character/peter_griffin/peter_griffin_nextbot.ent" />
             <File Id="1" Path="entities/character/deepsea_diver/deepsea_diver_monster/deepsea_diver_monster.ent" />
             <File Id="2" Path="entities/shipwreck/debris/cave_in_metal_xxx/cave_in_metal_02.ent" />
@@ -10,6 +10,7 @@
             <File Id="6" Path="entities/shipwreck/doors/gate_cargo_bay/gate_cargo_bay.ent" />
             <File Id="7" Path="entities/shipwreck/furniture/chair_work/chair_work.ent" />
             <File Id="8" Path="entities/shipwreck/stairs/stairs_no_railing_02_01.ent" />
+            <File Id="9" Path="entities/shipwreck/storage/cargo_crate/cargo_crate_static_prop.ent" />
         </FileIndex_Entities>
         <Objects>
             <Entity ID="268435467" Name="beter" CreStamp="1673056289" ModStamp="1673069278" WorldPos="0 0 14.75" Rotation="-0 3.14159 -0" Scale="1 1 1" FileIndex="0" Active="true" Important="false" CulledByDistance="true" CulledByFog="true" UID="16 30 268435467">
@@ -315,6 +316,138 @@
                     <Var Name="ExtraConnectionLightType" Value="Mul" />
                     <Var Name="AngularOffsetEntity" Value="" />
                     <Var Name="CustomInteractIcon" Value="PushButton" />
+                </UserVariables>
+            </Entity>
+            <Entity ID="268435497" Name="stairs_no_railing_02_01_3" CreStamp="1673072149" ModStamp="1673072170" WorldPos="-57.5 7.5 30" Rotation="-0 3.14159 -0" Scale="1 1 1" FileIndex="8" Active="true" Important="false" CulledByDistance="true" CulledByFog="true" UID="16 1 268435497">
+                <UserVariables>
+                    <Var Name="EventInstanceTag" Value="" />
+                    <Var Name="CollideGroup" Value="" />
+                    <Var Name="UserVar" Value="" />
+                    <Var Name="DisableBreakable" Value="false" />
+                    <Var Name="FullGameSave" Value="false" />
+                    <Var Name="StaticPhysics" Value="true" />
+                    <Var Name="EffectsActive" Value="true" />
+                    <Var Name="InteractionDisabled" Value="false" />
+                    <Var Name="CastShadows" Value="true" />
+                    <Var Name="ColorMul" Value="1 1 1 1" />
+                    <Var Name="EffectColorMul" Value="1 1 1 1" />
+                    <Var Name="EffectBrightnessMul" Value="1" />
+                    <Var Name="IllumColor" Value="1 1 1 1" />
+                    <Var Name="IllumBrightness" Value="1" />
+                    <Var Name="IsAffectedByDecal" Value="false" />
+                    <Var Name="IsOccluder" Value="false" />
+                    <Var Name="UpdateBonesWhenCulled" Value="false" />
+                    <Var Name="OnBreakCallbackFunc" Value="" />
+                    <Var Name="ConnectionStateChangeCallback" Value="" />
+                    <Var Name="PlayerLookAtCallback" Value="" />
+                    <Var Name="PlayerLookAtCallbackAutoRemove" Value="false" />
+                    <Var Name="PlayerLookAtCheckCenterOfScreen" Value="true" />
+                    <Var Name="PlayerLookAtCheckRayIntersection" Value="true" />
+                    <Var Name="PlayerLookAtMaxDistance" Value="-1" />
+                    <Var Name="PlayerLookAtCallbackDelay" Value="0" />
+                    <Var Name="PlayerInteractCallback" Value="" />
+                    <Var Name="PlayerInteractCallbackAutoRemove" Value="false" />
+                    <Var Name="RecieveMessageCallback" Value="" />
+                    <Var Name="CC_Entities" Value="" />
+                    <Var Name="CC_Funcs" Value="" />
+                    <Var Name="ConnectedEntity" Value="" />
+                    <Var Name="ConnectedEntityInvertState" Value="false" />
+                    <Var Name="ConnectedEntityStatesUsed" Value="0" />
+                    <Var Name="ParentAttachEntity" Value="" />
+                    <Var Name="ParentAttachUseRotation" Value="true" />
+                    <Var Name="ParentAttachBody" Value="" />
+                    <Var Name="ParentAttachSocket" Value="" />
+                    <Var Name="ParentAttachSnap" Value="false" />
+                    <Var Name="ParentAttachLocked" Value="false" />
+                    <Var Name="ConnectedLight" Value="" />
+                    <Var Name="ConnectionLightAmount" Value="1" />
+                    <Var Name="ConnectionLightUseOnColor" Value="true" />
+                    <Var Name="ConnectionLightUseSpec" Value="false" />
+                    <Var Name="ConnectionLightType" Value="Mul" />
+                    <Var Name="ExtraConnectedLight" Value="" />
+                    <Var Name="ExtraConnectionLightAmount" Value="1" />
+                    <Var Name="ExtraConnectionLightUseOnColor" Value="true" />
+                    <Var Name="ExtraConnectionLightUseSpec" Value="false" />
+                    <Var Name="ExtraConnectionLightType" Value="Mul" />
+                    <Var Name="AngularOffsetEntity" Value="" />
+                    <Var Name="CustomInteractIcon" Value="PushButton" />
+                </UserVariables>
+            </Entity>
+            <Entity ID="268435498" Name="cargo_crate_static_prop_1" CreStamp="1673072239" ModStamp="1673072257" WorldPos="-57.25 8.75 35" Rotation="0 0 0" Scale="1 1 1" FileIndex="9" Active="true" Important="false" CulledByDistance="true" CulledByFog="true" UID="16 45 268435498">
+                <UserVariables>
+                    <Var Name="CastShadows" Value="true" />
+                    <Var Name="IsAffectedByDecal" Value="true" />
+                    <Var Name="ColorMul" Value="1 1 1 1" />
+                    <Var Name="IllumColor" Value="1 1 1 1" />
+                    <Var Name="IllumBrightness" Value="1" />
+                    <Var Name="IsOccluder" Value="false" />
+                    <Var Name="CollideGroup" Value="" />
+                </UserVariables>
+            </Entity>
+            <Entity ID="268435499" Name="cargo_crate_static_prop_2" CreStamp="1673072267" ModStamp="1673072269" WorldPos="-57.25 8.75 37.5" Rotation="0 0 0" Scale="1 1 1" FileIndex="9" Active="true" Important="false" CulledByDistance="true" CulledByFog="true" UID="16 0 268435499">
+                <UserVariables>
+                    <Var Name="CastShadows" Value="true" />
+                    <Var Name="IsAffectedByDecal" Value="true" />
+                    <Var Name="ColorMul" Value="1 1 1 1" />
+                    <Var Name="IllumColor" Value="1 1 1 1" />
+                    <Var Name="IllumBrightness" Value="1" />
+                    <Var Name="IsOccluder" Value="false" />
+                    <Var Name="CollideGroup" Value="" />
+                </UserVariables>
+            </Entity>
+            <Entity ID="268435500" Name="cargo_crate_static_prop_3" CreStamp="1673072269" ModStamp="1673072271" WorldPos="-57.25 8.75 40" Rotation="0 0 0" Scale="1 1 1" FileIndex="9" Active="true" Important="false" CulledByDistance="true" CulledByFog="true" UID="16 59 268435500">
+                <UserVariables>
+                    <Var Name="CastShadows" Value="true" />
+                    <Var Name="IsAffectedByDecal" Value="true" />
+                    <Var Name="ColorMul" Value="1 1 1 1" />
+                    <Var Name="IllumColor" Value="1 1 1 1" />
+                    <Var Name="IllumBrightness" Value="1" />
+                    <Var Name="IsOccluder" Value="false" />
+                    <Var Name="CollideGroup" Value="" />
+                </UserVariables>
+            </Entity>
+            <Entity ID="268435509" Name="cargo_crate_static_prop_4" CreStamp="1673072614" ModStamp="1673072617" WorldPos="-59.75 8.75 40" Rotation="0 0 0" Scale="1 1 1" FileIndex="9" Active="true" Important="false" CulledByDistance="true" CulledByFog="true" UID="16 46 268435509">
+                <UserVariables>
+                    <Var Name="CastShadows" Value="true" />
+                    <Var Name="IsAffectedByDecal" Value="true" />
+                    <Var Name="ColorMul" Value="1 1 1 1" />
+                    <Var Name="IllumColor" Value="1 1 1 1" />
+                    <Var Name="IllumBrightness" Value="1" />
+                    <Var Name="IsOccluder" Value="false" />
+                    <Var Name="CollideGroup" Value="" />
+                </UserVariables>
+            </Entity>
+            <Entity ID="268435510" Name="cargo_crate_static_prop_5" CreStamp="1673072618" ModStamp="1673072621" WorldPos="-59.75 8.75 37.5" Rotation="0 0 0" Scale="1 1 1" FileIndex="9" Active="true" Important="false" CulledByDistance="true" CulledByFog="true" UID="16 58 268435510">
+                <UserVariables>
+                    <Var Name="CastShadows" Value="true" />
+                    <Var Name="IsAffectedByDecal" Value="true" />
+                    <Var Name="ColorMul" Value="1 1 1 1" />
+                    <Var Name="IllumColor" Value="1 1 1 1" />
+                    <Var Name="IllumBrightness" Value="1" />
+                    <Var Name="IsOccluder" Value="false" />
+                    <Var Name="CollideGroup" Value="" />
+                </UserVariables>
+            </Entity>
+            <Entity ID="268435511" Name="cargo_crate_static_prop_6" CreStamp="1673072626" ModStamp="1673072632" WorldPos="-59.75 8.75 35" Rotation="0 0 0" Scale="1 1 1" FileIndex="9" Active="true" Important="false" CulledByDistance="true" CulledByFog="true" UID="16 61 268435511">
+                <UserVariables>
+                    <Var Name="CastShadows" Value="true" />
+                    <Var Name="IsAffectedByDecal" Value="true" />
+                    <Var Name="ColorMul" Value="1 1 1 1" />
+                    <Var Name="IllumColor" Value="1 1 1 1" />
+                    <Var Name="IllumBrightness" Value="1" />
+                    <Var Name="IsOccluder" Value="false" />
+                    <Var Name="CollideGroup" Value="" />
+                </UserVariables>
+            </Entity>
+            <Entity ID="268435512" Name="cargo_crate_static_prop_7" CreStamp="1673072640" ModStamp="1673072632" WorldPos="-59.75 8.75 35" Rotation="0 0 0" Scale="1 1 1" FileIndex="9" Active="true" Important="false" CulledByDistance="true" CulledByFog="true" UID="16 60 268435512">
+                <UserVariables>
+                    <Var Name="CastShadows" Value="true" />
+                    <Var Name="IsAffectedByDecal" Value="true" />
+                    <Var Name="ColorMul" Value="1 1 1 1" />
+                    <Var Name="IllumColor" Value="1 1 1 1" />
+                    <Var Name="IllumBrightness" Value="1" />
+                    <Var Name="IsOccluder" Value="false" />
+                    <Var Name="CollideGroup" Value="" />
                 </UserVariables>
             </Entity>
         </Objects>

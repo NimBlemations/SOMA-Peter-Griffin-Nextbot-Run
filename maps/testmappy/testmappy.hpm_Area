@@ -18,6 +18,30 @@
             <Area ID="268435476" Name="PathNodeArea_4" CreStamp="1673066254" ModStamp="1673066259" WorldPos="-25.5 0 -2.75" Rotation="0 0 0" Scale="0.5 0.5 0.5" Active="true" Mesh="" UID="16 28 268435476" AreaType="PathNode">
                 <UserVariables />
             </Area>
+            <Area ID="268435501" Name="PathNodeArea_5" CreStamp="1673072282" ModStamp="1673072282" WorldPos="-43.75 0 4" Rotation="0 0 0" Scale="0.5 0.5 0.5" Active="true" Mesh="" UID="16 40 268435501" AreaType="PathNode">
+                <UserVariables />
+            </Area>
+            <Area ID="268435502" Name="PathNodeArea_6" CreStamp="1673072286" ModStamp="1673072286" WorldPos="-56.25 0 7.5" Rotation="0 0 0" Scale="0.5 0.5 0.5" Active="true" Mesh="" UID="16 38 268435502" AreaType="PathNode">
+                <UserVariables />
+            </Area>
+            <Area ID="268435503" Name="PathNodeArea_7" CreStamp="1673072291" ModStamp="1673072291" WorldPos="-57.5 0 14" Rotation="0 0 0" Scale="0.5 0.5 0.5" Active="true" Mesh="" UID="16 44 268435503" AreaType="PathNode">
+                <UserVariables />
+            </Area>
+            <Area ID="268435504" Name="PathNodeArea_8" CreStamp="1673072294" ModStamp="1673072303" WorldPos="-57.5 0 21" Rotation="0 0 0" Scale="0.5 0.5 0.5" Active="true" Mesh="" UID="16 39 268435504" AreaType="PathNode">
+                <UserVariables />
+            </Area>
+            <Area ID="268435505" Name="PathNodeArea_9" CreStamp="1673072304" ModStamp="1673072329" WorldPos="-57.5 7.75 29.75" Rotation="0 0 0" Scale="0.5 0.5 0.5" Active="true" Mesh="" UID="16 43 268435505" AreaType="PathNode">
+                <UserVariables />
+            </Area>
+            <Area ID="268435506" Name="PathNodeArea_10" CreStamp="1673072319" ModStamp="1673072317" WorldPos="-57.5 4.25 25.25" Rotation="0 0 0" Scale="0.5 0.5 0.5" Active="true" Mesh="" UID="16 42 268435506" AreaType="PathNode">
+                <UserVariables />
+            </Area>
+            <Area ID="268435507" Name="PathNodeArea_11" CreStamp="1673072334" ModStamp="1673072337" WorldPos="-57.5 11.25 33.75" Rotation="0 0 0" Scale="0.5 0.5 0.5" Active="true" Mesh="" UID="16 37 268435507" AreaType="PathNode">
+                <UserVariables />
+            </Area>
+            <Area ID="268435508" Name="PathNodeArea_12" CreStamp="1673072339" ModStamp="1673072342" WorldPos="-57.5 11.25 40" Rotation="0 0 0" Scale="0.5 0.5 0.5" Active="true" Mesh="" UID="16 41 268435508" AreaType="PathNode">
+                <UserVariables />
+            </Area>
         </Objects>
     </Section>
 </HPLMapTrack_Area>
