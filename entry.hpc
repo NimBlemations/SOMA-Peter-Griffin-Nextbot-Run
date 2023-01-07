@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Content Author="NimBlemations" Dependancies="" Dependencies="" Description="Run from Peter Griffin." InitCfg="config/main_init.cfg" LanguageFolder="lang" LauncherPic="" ResourcesCfg="" Title="Peter Griffin Nextbot Run" Type="StandAlone" UID="" Version="1.0"/>
+<Content Author="NimBlemations" Dependancies="" Dependencies="" Description="Run from Peter Griffin.&#10;&#10;This was created as to see what quick and stupid things I could do, hehe.&#10;&#10;...Do you hear the Family Guy theme?" InitCfg="config/main_init.cfg" LanguageFolder="lang" LauncherPic="Peter_Griffin_Thumbnail.png" ResourcesCfg="" Title="Peter Griffin Nextbot Run (Test)" Type="StandAlone" UID="" Version="1.0"/>

@@ -82,35 +82,15 @@ class cScrPlayer : iScrPlayerBase, iScrPlayer_Interface
 		
 		@mvCrossHairGfx[eCrossHairState_None] = null;
 		@mvCrossHairGfx[eCrossHairState_Default] = cGui_CreateGfxImage("hud/crosshair_default.tga",eGuiMaterial_Alpha);
-		@mvCrossHairGfx[eCrossHairState_CarryOneHanded] = cGui_CreateGfxImage("hud/crosshair_carry_one_handed.tga",eGuiMaterial_Alpha);
-		@mvCrossHairGfx[eCrossHairState_CarryTwoHanded] = cGui_CreateGfxImage("hud/crosshair_carry_two_handed.tga",eGuiMaterial_Alpha);
-		@mvCrossHairGfx[eCrossHairState_Push] = cGui_CreateGfxImage("hud/crosshair_push.tga",eGuiMaterial_Alpha);
-		@mvCrossHairGfx[eCrossHairState_PullLever] = cGui_CreateGfxImage("hud/crosshair_pull_lever.tga",eGuiMaterial_Alpha);
-		@mvCrossHairGfx[eCrossHairState_PullLeverSmall] = cGui_CreateGfxImage("hud/crosshair_pull_lever_small.tga",eGuiMaterial_Alpha);
-		@mvCrossHairGfx[eCrossHairState_PullSideways] = cGui_CreateGfxImage("hud/crosshair_pull_sideways.tga",eGuiMaterial_Alpha);
-		@mvCrossHairGfx[eCrossHairState_PullVertical] = cGui_CreateGfxImage("hud/crosshair_pull_vertical.tga",eGuiMaterial_Alpha);
-		@mvCrossHairGfx[eCrossHairState_PullOut] = cGui_CreateGfxImage("hud/crosshair_pull_out.tga",eGuiMaterial_Alpha);
-		@mvCrossHairGfx[eCrossHairState_PullDoor] = cGui_CreateGfxImage("hud/crosshair_pull_door.tga",eGuiMaterial_Alpha);
-		@mvCrossHairGfx[eCrossHairState_PullDoorHatch] = cGui_CreateGfxImage("hud/crosshair_pull_door_hatch.tga",eGuiMaterial_Alpha);
-		@mvCrossHairGfx[eCrossHairState_Rotate] = cGui_CreateGfxImage("hud/crosshair_rotate.tga",eGuiMaterial_Alpha);
-		@mvCrossHairGfx[eCrossHairState_RotateOneHanded] = cGui_CreateGfxImage("hud/crosshair_rotate_one_handed.tga",eGuiMaterial_Alpha);
-		@mvCrossHairGfx[eCrossHairState_PushButton] = cGui_CreateGfxImage("hud/crosshair_push_button.tga",eGuiMaterial_Alpha);
 		@mvCrossHairGfx[eCrossHairState_PickUp] = cGui_CreateGfxImage("hud/crosshair_pick_up.tga",eGuiMaterial_Alpha);
 		@mvCrossHairGfx[eCrossHairState_UseTool_Insert] = cGui_CreateGfxImage("hud/crosshair_use_tool_insert.tga",eGuiMaterial_Alpha);
 		@mvCrossHairGfx[eCrossHairState_UseTool_Action] = cGui_CreateGfxImage("hud/crosshair_use_tool_action.tga",eGuiMaterial_Alpha);
 		@mvCrossHairGfx[eCrossHairState_Terminal] = cGui_CreateGfxImage("hud/crosshair_terminal.tga",eGuiMaterial_Alpha);
-		@mvCrossHairGfx[eCrossHairState_Datamine] = cGui_CreateGfxImage("hud/crosshair_datamine.tga",eGuiMaterial_Alpha);
 		@mvCrossHairGfx[eCrossHairState_ClimbLadder] = cGui_CreateGfxImage("hud/crosshair_climb_ladder.tga",eGuiMaterial_Alpha);
-		@mvCrossHairGfx[eCrossHairState_Talk] = cGui_CreateGfxImage("hud/crosshair_talk.tga",eGuiMaterial_Alpha);
-		@mvCrossHairGfx[eCrossHairState_TalkBusy] = cGui_CreateGfxImage("hud/crosshair_talk_busy.tga",eGuiMaterial_Alpha);
-		@mvCrossHairGfx[eCrossHairState_Eat] = cGui_CreateGfxImage("hud/crosshair_eat.tga",eGuiMaterial_Alpha);
-		@mvCrossHairGfx[eCrossHairState_Read] = cGui_CreateGfxImage("hud/crosshair_read.tga",eGuiMaterial_Alpha);
 		@mvCrossHairGfx[eCrossHairState_ExitLevel] = cGui_CreateGfxImage("hud/crosshair_exit_level.tga",eGuiMaterial_Alpha);
 		@mvCrossHairGfx[eCrossHairState_ClimbLedge] = cGui_CreateGfxImage("hud/crosshair_climb_ledge.tga",eGuiMaterial_Alpha);
-		@mvCrossHairGfx[eCrossHairState_SitDown] = cGui_CreateGfxImage("hud/crosshair_sit_down.tga",eGuiMaterial_Alpha);
 		@mvCrossHairGfx[eCrossHairState_DefaultLarge] = cGui_CreateGfxImage("hud/crosshair_default_large.tga",eGuiMaterial_Alpha);
 		@mvCrossHairGfx[eCrossHairState_DefaultLargeClear] = cGui_CreateGfxImage("hud/crosshair_default_large_clear.tga",eGuiMaterial_Alpha);
-		@mvCrossHairGfx[eCrossHairState_Examine] = cGui_CreateGfxImage("hud/crosshair_magnify.tga",eGuiMaterial_Alpha);
 		@mvCrossHairGfx[eCrossHairState_Recharge] = cGui_CreateGfxImage("hud/crosshair_recharge.tga",eGuiMaterial_Alpha);
 		@mvCrossHairGfx[eCrossHairState_RechargeBad] = cGui_CreateGfxImage("hud/crosshair_recharge_bad.tga",eGuiMaterial_Alpha);
 		@mvCrossHairGfx[eCrossHairState_FireGun] = cGui_CreateGfxImage("hud/crosshair_shock.tga",eGuiMaterial_Alpha);
@@ -370,10 +350,13 @@ class cScrPlayer : iScrPlayerBase, iScrPlayer_Interface
 		{
 			cGuiGfxElement @pCross = mvCrossHairGfx[meCrossHairState];
 			
+			/*
 			if (mbUseLargeDefaultCursor && meCrossHairState == eCrossHairState_Default)
 				@pCross = mvCrossHairGfx[eCrossHairState_DefaultLarge];
 			else if (EyeTracking_IsActive() && mbEyeTrackingBiggerCrosshair && meCrossHairState == eCrossHairState_Default)
 				@pCross = mvCrossHairGfx[eCrossHairState_DefaultLargeClear];
+			*/
+			@pCross = mvCrossHairGfx[eCrossHairState_DefaultLargeClear];
 				
 			// Simple cursor wins
 			if (mbUseNoHintsCursor)

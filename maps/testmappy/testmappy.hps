@@ -43,7 +43,14 @@ class cScrMap : iScrMap
 	// Run first time starting map
 	void OnStart()
 	{
+		Pathfinder_Track_Clear("beter");
+		Pathfinder_Track_Add("beter", "PathNodeArea_1", 4.0f, 4.0f);
+		Pathfinder_Track_Add("beter", "PathNodeArea_2", 4.0f, 4.0f);
+		Pathfinder_Track_Add("beter", "PathNodeArea_3", 4.0f, 4.0f);
+		Pathfinder_Track_Add("beter", "PathNodeArea_4", 4.0f, 4.0f);
+		Pathfinder_Track_Start("beter", false, 1.0f);
 		
+		cLux_AddDebugMessage("Watch Family Guy now! Or die!");
 	}
 
 	//-------------------------------------------------------

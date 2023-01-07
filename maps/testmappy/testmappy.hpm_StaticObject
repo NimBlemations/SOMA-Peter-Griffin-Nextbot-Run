@@ -1,6 +1,24 @@
 <HPLMapTrack_StaticObject ID="931E5E45790B1FD707B6978E6ECDDA3E6CA190F" Version="1.00">
     <Section Name="Axel@SATURN">
-        <FileIndex_StaticObjects NumOfFiles="0" />
-        <Objects />
+        <FileIndex_StaticObjects NumOfFiles="9">
+            <File Id="0" Path="static_objects/environment/rock_forest/rock_forest_large.DAE" />
+            <File Id="1" Path="static_objects/environment/rock_forest/rock_forest_round.DAE" />
+            <File Id="2" Path="static_objects/environment/rocks/halfsize_wall_flat_to_turn_convex_left.dae" />
+            <File Id="3" Path="static_objects/environment/rocks/halfsize_wall_flat_to_turn_convex_right.dae" />
+            <File Id="4" Path="static_objects/environment/rocks/wall_turn_convex_small02.dae" />
+            <File Id="5" Path="static_objects/environment/rocks_abyss/halfsize_wall_turn_convex_small01.dae" />
+            <File Id="6" Path="static_objects/environment/rocks_abyss/rock_jagged_large.dae" />
+            <File Id="7" Path="static_objects/environment/rocks_abyss/rock_jagged_medium.dae" />
+            <File Id="8" Path="static_objects/environment/rocks_abyss/rock_rounded_small03.dae" />
+        </FileIndex_StaticObjects>
+        <Objects>
+            <StaticObject ID="268435478" Name="environment_rock_forest_rock_forest_large_1" CreStamp="1673070162" ModStamp="1673070344" WorldPos="-54.5 0 21.25" Rotation="0 0 0" Scale="1 1 1" FileIndex="0" Collides="true" CastShadows="true" IsOccluder="true" ColorMul="1 1 1 1" CulledByDistance="true" CulledByFog="true" IllumColor="1 1 1 1" IllumBrightness="1" UID="16 17 268435478" />
+            <StaticObject ID="268435479" Name="environment_rock_forest_rock_forest_round_1" CreStamp="1673070167" ModStamp="1673070167" WorldPos="-53.5 0 12.25" Rotation="0 0 0" Scale="1 1 1" FileIndex="1" Collides="true" CastShadows="true" IsOccluder="true" ColorMul="1 1 1 1" CulledByDistance="true" CulledByFog="true" IllumColor="1 1 1 1" IllumBrightness="1" UID="16 16 268435479" />
+            <StaticObject ID="268435480" Name="environment_rock_forest_rock_forest_round_2" CreStamp="1673070170" ModStamp="1673070342" WorldPos="-46.25 0 15.25" Rotation="0 0 0" Scale="1 1 1" FileIndex="1" Collides="true" CastShadows="true" IsOccluder="true" ColorMul="1 1 1 1" CulledByDistance="true" CulledByFog="true" IllumColor="1 1 1 1" IllumBrightness="1" UID="16 18 268435480" />
+            <StaticObject ID="268435481" Name="environment_rock_forest_rock_forest_round_3" CreStamp="1673070171" ModStamp="1673070171" WorldPos="-60.5 0 15.5" Rotation="0 0 0" Scale="1 1 1" FileIndex="1" Collides="true" CastShadows="true" IsOccluder="true" ColorMul="1 1 1 1" CulledByDistance="true" CulledByFog="true" IllumColor="1 1 1 1" IllumBrightness="1" UID="16 12 268435481" />
+            <StaticObject ID="268435486" Name="environment_rocks_abyss_rock_jagged_large_1" CreStamp="1673070288" ModStamp="1673070288" WorldPos="-64.25 0 20" Rotation="0 0 0" Scale="1 1 1" FileIndex="6" Collides="true" CastShadows="true" IsOccluder="true" ColorMul="1 1 1 1" CulledByDistance="true" CulledByFog="true" IllumColor="1 1 1 1" IllumBrightness="1" UID="16 11 268435486" />
+            <StaticObject ID="268435487" Name="environment_rocks_abyss_rock_jagged_medium_1" CreStamp="1673070290" ModStamp="1673070290" WorldPos="-61.75 0 29.25" Rotation="0 0 0" Scale="1 1 1" FileIndex="7" Collides="true" CastShadows="true" IsOccluder="true" ColorMul="1 1 1 1" CulledByDistance="true" CulledByFog="true" IllumColor="1 1 1 1" IllumBrightness="1" UID="16 10 268435487" />
+            <StaticObject ID="268435488" Name="environment_rocks_abyss_rock_rounded_small03_1" CreStamp="1673070297" ModStamp="1673070297" WorldPos="-57 0 27.5" Rotation="0 0 0" Scale="1 1 1" FileIndex="8" Collides="false" CastShadows="true" IsOccluder="true" ColorMul="1 1 1 1" CulledByDistance="true" CulledByFog="true" IllumColor="1 1 1 1" IllumBrightness="1" UID="16 9 268435488" />
+        </Objects>
     </Section>
 </HPLMapTrack_StaticObject>

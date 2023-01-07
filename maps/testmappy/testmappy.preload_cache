@@ -1,6 +1,16 @@
 <PreloadCache>
     <Materials>
+        <Material DebugPos="-40.500000 : 0.696555 : 37.698189" Path="entities/shipwreck/debris/cave_in_metal_xxx/cave_in_metal_01.mat" />
+        <Material DebugPos="-59.244694 : 0.983653 : 35.795494" Path="entities/shipwreck/debris/cave_in_metal_xxx/cave_in_metal_02.mat" />
+        <Material DebugPos="-52.498016 : 0.110192 : 17.500000" Path="entities/shipwreck/debris/plastic_glass/plastic_glass.mat" />
+        <Material DebugPos="-63.268536 : 0.278326 : 24.249153" Path="entities/shipwreck/debris/scrap_generator/scrap_generator.mat" />
+        <Material DebugPos="-59.752842 : 0.704726 : 21.003441" Path="entities/shipwreck/furniture/chair_work/chair_work.mat" />
         <Material DebugPos="0.000000 : 2.250000 : 14.749500" Path="mods/petergriffinnextbot/assets/entities/character/peter_griffin/ptr_grffn.mat" />
+        <Material DebugPos="-53.302242 : 2.840838 : 17.469095" Path="static_objects/environment/rock_forest/rock_forest.mat" />
+        <Material DebugPos="-56.918983 : 0.282740 : 27.500000" Path="static_objects/environment/rocks_abyss/rock_huge_abyss.mat" />
+        <Material DebugPos="-64.250000 : 0.813910 : 20.261173" Path="static_objects/environment/rocks_abyss/rock_large.mat" />
+        <Material DebugPos="-61.761124 : 0.372616 : 29.313313" Path="static_objects/environment/rocks_abyss/rock_medium.mat" />
+        <Material DebugPos="-57.500004 : 1.974943 : 23.391325" Path="static_objects/shipwreck/stairs/shipwreck_stairs_metal.mat" />
         <Material DebugPos="-11.000000 : -0.000500 : 6.750000" Path="static_objects/station/floor/floor_theta02.mat" />
         <Material DebugPos="-10.999983 : 4.499980 : 6.749956" Path="static_objects/urban/special/00_04_window_glass.mat" />
     </Materials>
