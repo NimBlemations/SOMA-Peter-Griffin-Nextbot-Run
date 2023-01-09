@@ -15,7 +15,7 @@
         <Material DebugPos="-64.250000 : 0.813910 : 20.261173" Path="static_objects/environment/rocks_abyss/rock_large.mat" />
         <Material DebugPos="-61.761124 : 0.372616 : 29.313313" Path="static_objects/environment/rocks_abyss/rock_medium.mat" />
         <Material DebugPos="-57.500004 : 9.474943 : 31.891325" Path="static_objects/shipwreck/stairs/shipwreck_stairs_metal.mat" />
-        <Material DebugPos="-11.000000 : -0.000500 : 6.750000" Path="static_objects/station/floor/floor_theta02.mat" />
+        <Material DebugPos="-75.625000 : -0.000500 : 49.750000" Path="static_objects/station/floor/floor_theta02.mat" />
         <Material DebugPos="-10.999983 : 4.499980 : 6.749956" Path="static_objects/urban/special/00_04_window_glass.mat" />
         <Material DebugPos="Script" Path="damage_steam_screen.mat" />
         <Material DebugPos="Script" Path="d:/svn/depth/redist/textures/technical/advanced_black.mat" />
